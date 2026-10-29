@@ -1,0 +1,15 @@
+{
+	"name": "adf-with-sql",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "952ee803-39ca-4104-a19c-c257f8fb7ecb",
+		"tenantId": "7a41a21b-6cf9-4fb9-8b8d-9520a4de3975"
+	}
+}
