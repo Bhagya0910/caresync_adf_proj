@@ -7,9 +7,25 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-with-sql"
 		},
+		"Ls_PostgreSql_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Ls_PostgreSql'"
+		},
 		"ls_adls_caresync_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://caresyncproject09.dfs.core.windows.net/"
+		},
+		"Ls_PostgreSql_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "ep-soft-waterfall-a1x39u8x-pooler.ap-southeast-1.aws.neon.tech"
+		},
+		"Ls_PostgreSql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "neondb"
+		},
+		"Ls_PostgreSql_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "neondb_owner"
 		}
 	},
 	"variables": {
@@ -25,6 +41,28 @@
 				"type": "AzureBlobFS",
 				"typeProperties": {
 					"url": "[parameters('ls_adls_caresync_properties_typeProperties_url')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Ls_PostgreSql')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "PostgreSqlV2",
+				"typeProperties": {
+					"server": "[parameters('Ls_PostgreSql_properties_typeProperties_server')]",
+					"port": 5432,
+					"database": "[parameters('Ls_PostgreSql_properties_typeProperties_database')]",
+					"username": "[parameters('Ls_PostgreSql_properties_typeProperties_username')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('Ls_PostgreSql_password')]"
+					},
+					"sslMode": 2,
+					"authenticationType": "Basic"
 				}
 			},
 			"dependsOn": []

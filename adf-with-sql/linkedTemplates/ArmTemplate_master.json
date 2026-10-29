@@ -7,9 +7,25 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-with-sql"
 		},
+		"Ls_PostgreSql_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Ls_PostgreSql'"
+		},
 		"ls_adls_caresync_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://caresyncproject09.dfs.core.windows.net/"
+		},
+		"Ls_PostgreSql_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "ep-soft-waterfall-a1x39u8x-pooler.ap-southeast-1.aws.neon.tech"
+		},
+		"Ls_PostgreSql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "neondb"
+		},
+		"Ls_PostgreSql_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "neondb_owner"
 		},
 		"containerUri": {
 			"type": "string",
@@ -38,8 +54,20 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"Ls_PostgreSql_password": {
+						"value": "[parameters('Ls_PostgreSql_password')]"
+					},
 					"ls_adls_caresync_properties_typeProperties_url": {
 						"value": "[parameters('ls_adls_caresync_properties_typeProperties_url')]"
+					},
+					"Ls_PostgreSql_properties_typeProperties_server": {
+						"value": "[parameters('Ls_PostgreSql_properties_typeProperties_server')]"
+					},
+					"Ls_PostgreSql_properties_typeProperties_database": {
+						"value": "[parameters('Ls_PostgreSql_properties_typeProperties_database')]"
+					},
+					"Ls_PostgreSql_properties_typeProperties_username": {
+						"value": "[parameters('Ls_PostgreSql_properties_typeProperties_username')]"
 					}
 				}
 			},

@@ -5,8 +5,20 @@
 		"factoryName": {
 			"value": "adf-with-sql"
 		},
+		"Ls_PostgreSql_password": {
+			"value": ""
+		},
 		"ls_adls_caresync_properties_typeProperties_url": {
 			"value": "https://caresyncproject09.dfs.core.windows.net/"
+		},
+		"Ls_PostgreSql_properties_typeProperties_server": {
+			"value": "ep-soft-waterfall-a1x39u8x-pooler.ap-southeast-1.aws.neon.tech"
+		},
+		"Ls_PostgreSql_properties_typeProperties_database": {
+			"value": "neondb"
+		},
+		"Ls_PostgreSql_properties_typeProperties_username": {
+			"value": "neondb_owner"
 		},
 		"containerUri": {
 			"value": ""
