@@ -1,0 +1,62 @@
+{
+	"name": "PL_SOURCE_TO_SILVER",
+	"properties": {
+		"activities": [
+			{
+				"name": "Read source table list",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "select table_id from ctrl.table_config where is_active=1 and source_system = '@{pipeline().parameters.source_system}';",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Ds_AzureSqldatabase",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ingest all tables",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Read source table list",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Read source table list').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false
+				}
+			}
+		],
+		"parameters": {
+			"source_system": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
