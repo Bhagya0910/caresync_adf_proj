@@ -28,7 +28,7 @@
 						"referenceName": "Ds_AzureSqldatabase",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": false
+					"firstRowOnly": true
 				}
 			}
 		],
