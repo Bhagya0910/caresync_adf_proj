@@ -1,0 +1,23 @@
+{
+	"name": "Ls_AzureSqlDatabase",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "demo-sql-server-bhagihari.database.windows.net",
+			"database": "demo_sql_db",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "Bhagyahari",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "Ls_AzureKeyVault_caresync",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "metadata-sql-pwd"
+			}
+		}
+	}
+}
